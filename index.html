@@ -11,30 +11,62 @@
 <body class="selection:bg-yellow-200">
 
     <!-- Minimal Header -->
-    <nav class="p-8 flex justify-between items-center max-w-7xl mx-auto border-b-2 border-slate-200">
-        <div class="text-3xl font-bold tracking-tighter animated-logo">INDIANGIRLFOUNDATION.</div>
-        <div class="hidden md:flex gap-10 font-bold uppercase text-xs tracking-widest">
-            <a href="index.html" class="hover:underline">Home</a>
+    <nav class="p-4 md:p-8 flex justify-between items-center max-w-7xl mx-auto border-b-2 border-slate-200">
+        <div class="animated-logo">INDIANGIRLFOUNDATION.</div>
+        
+        <!-- Desktop Navigation -->
+        <div class="desktop-nav hidden md:flex gap-10 font-bold uppercase text-xs tracking-widest">
+            <a href="index.html" class="hover:underline text-orange-600">Home</a>
             <a href="focus.html" class="hover:underline">Focus</a>
             <a href="projects.html" class="hover:underline">Projects</a>
             <a href="gallery.html" class="hover:underline">Gallery</a>
             <a href="transparency.html" class="hover:underline">Transparency</a>
         </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-menu md:hidden">
+            <button class="mobile-menu-button" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
         <a href="donate.html" class="give-support-btn">GIVE SUPPORT</a>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile Menu Panel -->
+    <div class="mobile-menu-panel" id="mobileMenuPanel">
+        <div class="flex justify-between items-center mb-8">
+            <div class="animated-logo text-lg">INDIANGIRL.</div>
+            <button onclick="closeMobileMenu()" class="text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <nav class="space-y-6">
+            <a href="index.html" class="block font-bold text-orange-600 text-lg">Home</a>
+            <a href="focus.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Focus</a>
+            <a href="projects.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Projects</a>
+            <a href="gallery.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Gallery</a>
+            <a href="transparency.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Transparency</a>
+            <a href="donate.html" class="block font-bold text-orange-600 text-lg mt-8 p-4 bg-orange-100 rounded">Donate Now</a>
+        </nav>
+    </div>
+
     <!-- Editorial Hero -->
-    <header class="max-w-7xl mx-auto px-8 py-24 grid lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-7 space-y-10">
-            <h1 class="text-7xl md:text-9xl leading-[0.85] tracking-tighter">
+    <header class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-24 grid lg:grid-cols-12 gap-8 md:gap-12 items-center">
+        <div class="lg:col-span-7 space-y-6 md:space-y-10 text-center lg:text-left">
+            <h1 class="text-4xl md:text-7xl lg:text-9xl leading-[0.85] tracking-tighter">
                 We believe in <br> <span class="marker-underline">human</span> care.
             </h1>
-            <p class="text-2xl max-w-xl text-slate-600">
+            <p class="text-lg md:text-2xl max-w-xl text-slate-600 mx-auto lg:mx-0">
                 A community-led journal of action. Supporting those who have spent their lives supporting others.
             </p>
-            <div class="flex gap-6">
-                <a href="donate.html" class="brutal-btn">JOIN OUR MISSION</a>
-                <div class="flex items-center gap-4 text-sm font-bold uppercase tracking-widest">
+            <div class="flex flex-col sm:flex-row gap-4 md:gap-6 items-center justify-center lg:justify-start">
+                <a href="donate.html" class="brutal-btn mobile-full-width sm:w-auto">JOIN OUR MISSION</a>
+                <div class="flex items-center gap-4 text-sm font-bold uppercase tracking-widest mobile-hidden">
                     <span class="w-12 h-px bg-slate-400"></span>
                     Scroll to see the impact
                 </div>
@@ -42,7 +74,7 @@
         </div>
         <div class="lg:col-span-5 relative">
             <div class="scrapbook-photo">
-                <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&q=80&w=800" alt="Caring hands" class="w-full h-96 object-cover grayscale brightness-90">
+                <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&q=80&w=800" alt="Caring hands" class="w-full h-64 md:h-96 object-cover grayscale brightness-90">
                 <p class="mt-4 font-serif italic text-slate-500">"Kindness is a quiet power."</p>
             </div>
         </div>
@@ -244,6 +276,32 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const panel = document.getElementById('mobileMenuPanel');
+            
+            overlay.classList.add('open');
+            panel.classList.add('open');
+        }
+        
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const panel = document.getElementById('mobileMenuPanel');
+            
+            overlay.classList.remove('open');
+            panel.classList.remove('open');
+        }
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+    </script>
 
 </body>
 </html>

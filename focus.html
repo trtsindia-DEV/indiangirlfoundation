@@ -11,38 +11,70 @@
 <body class="selection:bg-yellow-200">
 
     <!-- Minimal Header -->
-    <nav class="p-8 flex justify-between items-center max-w-7xl mx-auto border-b-2 border-slate-200">
-        <div class="text-3xl font-bold tracking-tighter animated-logo">INDIANGIRLFOUNDATION.</div>
-        <div class="hidden md:flex gap-10 font-bold uppercase text-xs tracking-widest">
+    <nav class="p-4 md:p-8 flex justify-between items-center max-w-7xl mx-auto border-b-2 border-slate-200">
+        <div class="animated-logo">INDIANGIRLFOUNDATION.</div>
+        
+        <!-- Desktop Navigation -->
+        <div class="desktop-nav hidden md:flex gap-10 font-bold uppercase text-xs tracking-widest">
             <a href="index.html" class="hover:underline">Home</a>
             <a href="focus.html" class="hover:underline text-orange-600">Focus</a>
             <a href="projects.html" class="hover:underline">Projects</a>
             <a href="gallery.html" class="hover:underline">Gallery</a>
             <a href="transparency.html" class="hover:underline">Transparency</a>
         </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-menu md:hidden">
+            <button class="mobile-menu-button" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
         <a href="donate.html" class="give-support-btn">GIVE SUPPORT</a>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile Menu Panel -->
+    <div class="mobile-menu-panel" id="mobileMenuPanel">
+        <div class="flex justify-between items-center mb-8">
+            <div class="animated-logo text-lg">INDIANGIRL.</div>
+            <button onclick="closeMobileMenu()" class="text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <nav class="space-y-6">
+            <a href="index.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Home</a>
+            <a href="focus.html" class="block font-bold text-orange-600 text-lg">Focus</a>
+            <a href="projects.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Projects</a>
+            <a href="gallery.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Gallery</a>
+            <a href="transparency.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Transparency</a>
+            <a href="donate.html" class="block font-bold text-orange-600 text-lg mt-8 p-4 bg-orange-100 rounded">Donate Now</a>
+        </nav>
+    </div>
+
     <!-- Page Header -->
-    <header class="max-w-7xl mx-auto px-8 py-24">
-        <h1 class="text-7xl md:text-9xl leading-[0.85] tracking-tighter mb-8">
+    <header class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-24">
+        <h1 class="text-4xl md:text-7xl lg:text-9xl leading-[0.85] tracking-tighter mb-6 md:mb-8 text-center md:text-left">
             Our areas of <br> <span class="marker-underline">focus</span>.
         </h1>
-        <p class="text-2xl max-w-2xl text-slate-600">
+        <p class="text-lg md:text-2xl max-w-2xl text-slate-600 text-center md:text-left mx-auto md:mx-0">
             We don't try to do everything. We curate our energy to help where it's needed most.
         </p>
     </header>
 
     <!-- Asymmetrical Sectors -->
-    <section class="max-w-7xl mx-auto px-8 py-16 overflow-hidden">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+    <section class="max-w-7xl mx-auto px-4 md:px-8 py-8 md:py-16 overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
             <!-- Sector: Senior Citizens (Pinned Clipping) -->
             <div class="md:col-span-2 relative">
                 <div class="tape"></div>
                 <div class="clipping bg-white border-l-8 border-orange-600 h-full flex flex-col justify-center">
                     <span class="text-xs font-bold text-orange-600 uppercase tracking-widest mb-4">Primary Work</span>
-                    <h3 class="text-5xl italic mb-6">Senior Citizens</h3>
-                    <p class="text-lg text-slate-600 max-w-xl">
+                    <h3 class="text-3xl md:text-5xl italic mb-6">Senior Citizens</h3>
+                    <p class="text-base md:text-lg text-slate-600 max-w-xl">
                         This is the heartbeat of our journal. Over 70% of our resources are dedicated to the golden generation. Why? Because dignity shouldn't have an expiration date.
                     </p>
                     <div class="mt-8 flex gap-3">
@@ -59,7 +91,7 @@
                     <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h4 class="text-2xl font-bold mb-2">Child Education</h4>
+                    <h4 class="text-xl md:text-2xl font-bold mb-2">Child Education</h4>
                     <p class="text-sm text-slate-500 italic">Supplying tools for future journals.</p>
                 </div>
             </div>
@@ -70,7 +102,7 @@
                     <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-leaf"></i>
                     </div>
-                    <h4 class="text-2xl font-bold mb-2">Environment</h4>
+                    <h4 class="text-xl md:text-2xl font-bold mb-2">Environment</h4>
                     <p class="text-sm text-slate-500 italic">Protecting the world we live in.</p>
                 </div>
             </div>
@@ -80,21 +112,21 @@
                     <div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-ambulance"></i>
                     </div>
-                    <h4 class="text-2xl font-bold mb-2">Disaster Relief</h4>
+                    <h4 class="text-xl md:text-2xl font-bold mb-2">Disaster Relief</h4>
                     <p class="text-sm text-slate-500 italic">Immediate action in crisis.</p>
                 </div>
             </div>
 
             <div class="relative group lg:col-span-2">
                 <div class="clipping flex flex-col md:flex-row items-center justify-between bg-slate-100 border-none shadow-none">
-                    <div class="mb-4 md:mb-0">
-                        <h4 class="text-xl font-bold italic">Collective Action</h4>
+                    <div class="mb-4 md:mb-0 text-center md:text-left">
+                        <h4 class="text-lg md:text-xl font-bold italic">Collective Action</h4>
                         <p class="text-sm text-slate-500">Supporting Civic Issues, Art, and the Differently Abled.</p>
                     </div>
                     <div class="flex gap-4">
-                        <i class="fas fa-city opacity-20 text-4xl"></i>
-                        <i class="fas fa-palette opacity-20 text-4xl"></i>
-                        <i class="fas fa-wheelchair opacity-20 text-4xl"></i>
+                        <i class="fas fa-city opacity-20 text-3xl md:text-4xl"></i>
+                        <i class="fas fa-palette opacity-20 text-3xl md:text-4xl"></i>
+                        <i class="fas fa-wheelchair opacity-20 text-3xl md:text-4xl"></i>
                     </div>
                 </div>
             </div>
@@ -102,14 +134,14 @@
     </section>
 
     <!-- Detailed Focus Areas -->
-    <section class="py-32 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-8">
-            <h2 class="text-5xl mb-16 text-center">Why these <span class="italic">areas</span>?</h2>
+    <section class="py-16 md:py-32 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <h2 class="text-3xl md:text-5xl mb-8 md:mb-16 text-center">Why these <span class="italic">areas</span>?</h2>
             
-            <div class="grid md:grid-cols-2 gap-16">
-                <div class="space-y-8">
-                    <h3 class="text-3xl font-bold">Senior Citizens - Our Core</h3>
-                    <p class="text-lg text-slate-600">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16">
+                <div class="space-y-6 md:space-y-8">
+                    <h3 class="text-2xl md:text-3xl font-bold">Senior Citizens - Our Core</h3>
+                    <p class="text-base md:text-lg text-slate-600">
                         In a society that often overlooks its elders, we stand as their voice. Our senior citizen programs address loneliness, health challenges, and dignity restoration through direct intervention and community building.
                     </p>
                     <ul class="space-y-3 text-slate-600">
@@ -132,18 +164,18 @@
                     </ul>
                 </div>
 
-                <div class="space-y-8">
-                    <h3 class="text-3xl font-bold">Supporting Areas</h3>
+                <div class="space-y-6 md:space-y-8">
+                    <h3 class="text-2xl md:text-3xl font-bold">Supporting Areas</h3>
                     <div class="space-y-6">
-                        <div class="p-6 bg-white border-l-4 border-blue-600">
+                        <div class="p-4 md:p-6 bg-white border-l-4 border-blue-600">
                             <h4 class="font-bold text-blue-600 mb-2">Child Education</h4>
                             <p class="text-sm text-slate-600">Providing educational resources and mentorship to underprivileged children, creating tomorrow's compassionate leaders.</p>
                         </div>
-                        <div class="p-6 bg-white border-l-4 border-green-600">
+                        <div class="p-4 md:p-6 bg-white border-l-4 border-green-600">
                             <h4 class="font-bold text-green-600 mb-2">Environment</h4>
                             <p class="text-sm text-slate-600">Community-driven environmental initiatives that protect the world we're leaving for future generations.</p>
                         </div>
-                        <div class="p-6 bg-white border-l-4 border-red-600">
+                        <div class="p-4 md:p-6 bg-white border-l-4 border-red-600">
                             <h4 class="font-bold text-red-600 mb-2">Disaster Relief</h4>
                             <p class="text-sm text-slate-600">Rapid response support during natural disasters and emergencies, focusing on vulnerable populations.</p>
                         </div>
@@ -221,6 +253,32 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const panel = document.getElementById('mobileMenuPanel');
+            
+            overlay.classList.add('open');
+            panel.classList.add('open');
+        }
+        
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const panel = document.getElementById('mobileMenuPanel');
+            
+            overlay.classList.remove('open');
+            panel.classList.remove('open');
+        }
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+    </script>
 
 </body>
 </html>

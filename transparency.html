@@ -11,21 +11,53 @@
 <body class="selection:bg-yellow-200">
 
     <!-- Minimal Header -->
-    <nav class="p-8 flex justify-between items-center max-w-7xl mx-auto border-b-2 border-slate-200">
-        <div class="text-3xl font-bold tracking-tighter animated-logo">INDIANGIRLFOUNDATION.</div>
-        <div class="hidden md:flex gap-10 font-bold uppercase text-xs tracking-widest">
+    <nav class="p-4 md:p-8 flex justify-between items-center max-w-7xl mx-auto border-b-2 border-slate-200">
+        <div class="animated-logo">INDIANGIRLFOUNDATION.</div>
+        
+        <!-- Desktop Navigation -->
+        <div class="desktop-nav hidden md:flex gap-10 font-bold uppercase text-xs tracking-widest">
             <a href="index.html" class="hover:underline">Home</a>
             <a href="focus.html" class="hover:underline">Focus</a>
             <a href="projects.html" class="hover:underline">Projects</a>
             <a href="gallery.html" class="hover:underline">Gallery</a>
             <a href="transparency.html" class="hover:underline text-orange-600">Transparency</a>
         </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-menu md:hidden">
+            <button class="mobile-menu-button" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
         <a href="donate.html" class="give-support-btn">GIVE SUPPORT</a>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" onclick="closeMobileMenu()"></div>
+    
+    <!-- Mobile Menu Panel -->
+    <div class="mobile-menu-panel" id="mobileMenuPanel">
+        <div class="flex justify-between items-center mb-8">
+            <div class="animated-logo text-lg">INDIANGIRL.</div>
+            <button onclick="closeMobileMenu()" class="text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <nav class="space-y-6">
+            <a href="index.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Home</a>
+            <a href="focus.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Focus</a>
+            <a href="projects.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Projects</a>
+            <a href="gallery.html" class="block font-bold text-slate-700 text-lg hover:text-orange-600">Gallery</a>
+            <a href="transparency.html" class="block font-bold text-orange-600 text-lg">Transparency</a>
+            <a href="donate.html" class="block font-bold text-orange-600 text-lg mt-8 p-4 bg-orange-100 rounded">Donate Now</a>
+        </nav>
+    </div>
+
     <!-- Page Header -->
-    <header class="max-w-7xl mx-auto px-8 py-24">
-        <h1 class="text-7xl md:text-9xl leading-[0.85] tracking-tighter mb-8">
+    <header class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-24">
+        <h1 class="text-4xl md:text-7xl lg:text-9xl leading-[0.85] tracking-tighter mb-6 md:mb-8 text-center md:text-left">
             Accountable to <br> <span class="marker-underline">you</span>.
         </h1>
         <p class="text-2xl max-w-2xl text-slate-600">
@@ -349,6 +381,32 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const panel = document.getElementById('mobileMenuPanel');
+            
+            overlay.classList.add('open');
+            panel.classList.add('open');
+        }
+        
+        function closeMobileMenu() {
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const panel = document.getElementById('mobileMenuPanel');
+            
+            overlay.classList.remove('open');
+            panel.classList.remove('open');
+        }
+        
+        // Close menu on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+    </script>
 
 </body>
 </html>
