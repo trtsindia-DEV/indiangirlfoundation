@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;700&display=swap');
+
+:root {
+    --paper: #fcfaf2;
+    --ink: #1a1a1a;
+    --accent: #d97706;
+}
+
+body { 
+    font-family: 'Inter', sans-serif; 
+    background-color: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: 'DM+Serif+Display', serif;
+}
+
+/* The "Hand-Made" feel */
+.scrapbook-photo {
+    background: white;
+    padding: 12px;
+    padding-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+}
+
+.scrapbook-photo:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.marker-underline {
+    background-image: linear-gradient(120deg, #fde68a 0%, #fde68a 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.3em;
+    background-position: 0 88%;
+}
+
+.brutal-btn {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 16px 32px;
+    border: 2px solid var(--ink);
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.brutal-btn:hover {
+    background: transparent;
+    color: var(--ink);
+}
+
+.dashed-border {
+    border: 2px dashed #d1d5db;
+}
+
+/* New Sector Clipping Styles */
+.clipping {
+    background: white;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+    box-shadow: 5px 5px 0px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.clipping:hover {
+    transform: translateY(-5px) rotate(1deg);
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+}
+
+.tape {
+    background-color: rgba(253, 230, 138, 0.6);
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    z-index: 10;
+}
+
+/* Gallery specific styles */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.gallery-item {
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:nth-child(odd) {
+    transform: rotate(-1deg);
+}
+
+.gallery-item:nth-child(even) {
+    transform: rotate(1deg);
+}
+
+.gallery-item:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+/* Animated Logo Styles */
+.animated-logo {
+    background: linear-gradient(45deg, var(--ink), var(--accent), #e11d48, var(--ink));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--ink); /* Fallback for unsupported browsers */
+    animation: gradientShift 4s ease-in-out infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Fallback for browsers that don't support background-clip: text */
+@supports not (-webkit-background-clip: text) {
+    .animated-logo {
+        color: var(--accent);
+        animation: colorPulse 2s ease-in-out infinite alternate;
+    }
+}
+
+.animated-logo:hover {
+    transform: scale(1.05);
+    animation-duration: 1s;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes colorPulse {
+    0% {
+        color: var(--ink);
+    }
+    100% {
+        color: var(--accent);
+    }
+}
+
+/* Tab Styles */
+.tab-btn {
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    border-bottom-color: #d97706;
+    color: #d97706;
+}
+
+.tab-content {
+    display: block;
+}
+
+.tab-content.hidden {
+    display: none;
+}
+
+/* Enhanced button styles */
+.give-support-btn {
+    background: var(--accent);
+    color: white !important;
+    padding: 12px 24px;
+    border: 2px solid var(--accent);
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s ease;
+    box-shadow: 4px 4px 0px rgba(217, 119, 6, 0.3);
+    transform: translateY(0);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.give-support-btn:hover {
+    background: #b45309;
+    border-color: #b45309;
+    color: white !important;
+    box-shadow: 6px 6px 0px rgba(217, 119, 6, 0.4);
+    transform: translateY(-2px);
+}
+
+.give-support-btn:active {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 0px rgba(217, 119, 6, 0.3);
+    color: white !important;
+}
+
+/* QR Code Modal Styles */
+#qrModal {
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+#qrModal > div {
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Donation form styles */
+.donation-card {
+    background: white;
+    padding: 2rem;
+    border: 2px solid var(--ink);
+    box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
+}
+
+.amount-btn {
+    padding: 1rem 2rem;
+    border: 2px solid #e5e7eb;
+    background: white;
+    font-weight: bold;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.amount-btn:hover,
+.amount-btn.active {
+    background: var(--ink);
+    color: white;
+    border-color: var(--ink);
+}

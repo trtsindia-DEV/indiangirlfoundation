@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login | IndianGirlFoundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="selection:bg-yellow-200 bg-slate-100 min-h-screen flex items-center justify-center">
+
+    <!-- Login Form -->
+    <div class="max-w-md w-full mx-4">
+        <div class="donation-card">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold animated-logo mb-2">INDIANGIRLFOUNDATION.</h1>
+                <h2 class="text-2xl font-bold text-slate-700">Admin Panel</h2>
+                <p class="text-slate-600 mt-2">Please login to access the admin dashboard</p>
+            </div>
+
+            <form id="loginForm" class="space-y-6">
+                <div>
+                    <label class="block font-bold mb-2 text-slate-700">Username</label>
+                    <input type="text" id="username" class="w-full p-4 border-2 border-slate-200 focus:border-orange-600 outline-none rounded" placeholder="Enter username" required>
+                </div>
+                
+                <div>
+                    <label class="block font-bold mb-2 text-slate-700">Password</label>
+                    <input type="password" id="password" class="w-full p-4 border-2 border-slate-200 focus:border-orange-600 outline-none rounded" placeholder="Enter password" required>
+                </div>
+
+                <div id="errorMessage" class="hidden p-4 bg-red-50 border-l-4 border-red-600 text-red-700 text-sm">
+                    Invalid username or password. Please try again.
+                </div>
+
+                <button type="submit" class="brutal-btn w-full text-xl py-4">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    LOGIN
+                </button>
+            </form>
+
+            <div class="mt-8 text-center">
+                <a href="index.html" class="text-slate-500 hover:text-orange-600 transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Back to Website
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Simple authentication (in production, this should be server-side)
+            if (username === 'admin' && password === 'indiangirl2026') {
+                // Store login status
+                localStorage.setItem('adminLoggedIn', 'true');
+                localStorage.setItem('loginTime', Date.now().toString());
+                
+                // Redirect to dashboard
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                errorMessage.classList.remove('hidden');
+                // Clear form
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            }
+        });
+
+        // Check if already logged in
+        if (localStorage.getItem('adminLoggedIn') === 'true') {
+            const loginTime = parseInt(localStorage.getItem('loginTime'));
+            const currentTime = Date.now();
+            const sessionDuration = 24 * 60 * 60 * 1000; // 24 hours
+            
+            if (currentTime - loginTime < sessionDuration) {
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                // Session expired
+                localStorage.removeItem('adminLoggedIn');
+                localStorage.removeItem('loginTime');
+            }
+        }
+    </script>
+
+</body>
+</html>
