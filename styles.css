@@ -231,13 +231,10 @@ h3 {
     white-space: nowrap;
 }
 
-/* Mobile button optimization */
+/* Mobile button optimization - HIDE on mobile */
 @media (max-width: 767px) {
     .give-support-btn {
-        padding: 8px 12px;
-        font-size: 0.75rem;
-        box-shadow: 2px 2px 0px rgba(217, 119, 6, 0.3);
-        letter-spacing: 0.05em;
+        display: none !important;
     }
 }
 
